@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 블로그 | 퍼플 픽셀 월드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pixelPurple: '#9D5CFF',
+                        pixelDark: '#5A2D82',
+                        pixelLight: '#D4B5FF',
+                        pixelBlack: '#1A1029',
+                        pixelWhite: '#F9F4FF'
+                    },
+                    fontFamily: {
+                        pixel: ['"Press Start 2P"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .pixel-border {
+                box-shadow: 4px 0 0 0 #000, 0 4px 0 0 #000, 4px 4px 0 0 #000, 4px 0 0 0 #000 inset, 0 4px 0 0 #000 inset;
+            }
+            .pixel-button {
+                @apply relative bg-pixelPurple text-pixelWhite py-2 px-4 cursor-pointer transition-all duration-200 hover:bg-pixelDark active:top-1;
+            }
+            .retro-shadow {
+                text-shadow: 3px 3px 0px #000;
+            }
+            .grid-pattern {
+                background-image: linear-gradient(rgba(157, 92, 255, 0.1) 1px, transparent 1px),
+                                  linear-gradient(90deg, rgba(157, 92, 255, 0.1) 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="bg-pixelBlack text-pixelWhite grid-pattern min-h-screen">
+    <!-- 헤더 -->
+    <header class="py-6 px-4 md:px-8 border-b-4 border-pixelPurple">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-pixelPurple pixel-border flex items-center justify-center">
+                    <span class="font-pixel text-sm">B</span>
+                </div>
+                <h1 class="font-pixel text-xl md:text-2xl text-pixelLight retro-shadow">나의 블로그</h1>
+            </div>
+            
+            <nav class="font-pixel text-sm">
+                <ul class="flex gap-4 md:gap-6">
+                    <li><a href="#" class="hover:text-pixelPurple transition-colors">홈</a></li>
+                    <li><a href="#posts" class="hover:text-pixelPurple transition-colors">포스트</a></li>
+                    <li><a href="#about" class="hover:text-pixelPurple transition-colors">소개</a></li>
+                    <li><a href="#contact" class="hover:text-pixelPurple transition-colors">연락</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 배너 -->
+    <section class="py-12 px-4 text-center">
+        <div class="container mx-auto max-w-4xl">
+            <div class="pixel-border bg-pixelDark/70 p-6 md:p-8 mb-8">
+                <h2 class="font-pixel text-2xl md:text-3xl mb-4 text-pixelLight retro-shadow">퍼플 픽셀 월드</h2>
+                <p class="text-pixelLight/90 mb-6">1990년대 게임 감성을 담은 나만의 블로그 공간</p>
+                <div class="pixel-button font-pixel text-xs">
+                    <<i class="fa fa-pencil mr-2"></</i>최신 포스트 보기
+                </div>
+            </div>
+            
+            <div class="flex justify-center gap-3 mb-10">
+                <div class="w-3 h-3 bg-pixelPurple"></div>
+                <div class="w-3 h-3 bg-pixelLight"></div>
+                <div class="w-3 h-3 bg-pixelPurple"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 포스트 목록 -->
+    <section id="posts" class="py-8 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="font-pixel text-xl mb-8 text-center text-pixelLight">최근 포스트 <span class="text-pixelPurple">★</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 포스트 1 -->
+                <div class="bg-pixelBlack border-2 border-pixelPurple pixel-border p-4 hover:translate-y-[-4px] transition-transform">
+                    <div class="h-40 bg-pixelDark/50 mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/200?random=1" alt="포스트 이미지" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-pixel bg-pixelPurple/20 text-pixelPurple px-2 py-1">일상</span>
+                    <h3 class="font-pixel text-lg mt-2 mb-2">1998년 게임방 추억</h3>
+                    <p class="text-sm text-pixelWhite/80 mb-4">당시 가장 인기 있었던 게임들과 친구들과의 즐거운 시간을 회상해보았어요.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-pixelWhite/60">2023.10.15</span>
+                        <a href="#" class="text-xs font-pixel text-pixelLight hover:text-pixelPurple">계속 읽기 →</a>
+                    </div>
+                </div>
+                
+                <!-- 포스트 2 -->
+                <div class="bg-pixelBlack border-2 border-pixelPurple pixel-border p-4 hover:translate-y-[-4px] transition-transform">
+                    <div class="h-40 bg-pixelDark/50 mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/200?random=2" alt="포스트 이미지" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-pixel bg-pixelPurple/20 text-pixelPurple px-2 py-1">기술</span>
+                    <h3 class="font-pixel text-lg mt-2 mb-2">픽셀 아트 제작 방법</h3>
+                    <p class="text-sm text-pixelWhite/80 mb-4">간단한 도구를 사용해서 예쁜 픽셀 아트를 만드는 방법을 공유해드릴게요.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-pixelWhite/60">2023.10.10</span>
+                        <a href="#" class="text-xs font-pixel text-pixelLight hover:text-pixelPurple">계속 읽기 →</a>
+                    </div>
+                </div>
+                
+                <!-- 포스트 3 -->
+                <div class="bg-pixelBlack border-2 border-pixelPurple pixel-border p-4 hover:translate-y-[-4px] transition-transform">
+                    <div class="h-40 bg-pixelDark/50 mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/200?random=3" alt="포스트 이미지" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-pixel bg-pixelPurple/20 text-pixelPurple px-2 py-1">음악</span>
+                    <h3 class="font-pixel text-lg mt-2 mb-2">90년대 힙합 음악 추천</h3>
+                    <p class="text-sm text-pixelWhite/80 mb-4">당시 유행했던 힙합 곡들과 그背后에 있는 이야기를 소개해요.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-pixelWhite/60">2023.10.05</span>
+                        <a href="#" class="text-xs font-pixel text-pixelLight hover:text-pixelPurple">계속 읽기 →</a>
+                    </div>
+                </div>
+                
+                <!-- 포스트 4 -->
+                <div class="bg-pixelBlack border-2 border-pixelPurple pixel-border p-4 hover:translate-y-[-4px] transition-transform">
+                    <div class="h-40 bg-pixelDark/50 mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/200?random=4" alt="포스트 이미지" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-pixel bg-pixelPurple/20 text-pixelPurple px-2 py-1">여행</span>
+                    <h3 class="font-pixel text-lg mt-2 mb-2">고전 게임 촬영지 방문</h3>
+                    <p class="text-sm text-pixelWhite/80 mb-4">유명 게임들의 배경으로 사용된 실제 장소를 찾아가본 여행기를 적었어요.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-pixelWhite/60">2023.09.28</span>
+                        <a href="#" class="text-xs font-pixel text-pixelLight hover:text-pixelPurple">계속 읽기 →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button class="pixel-button font-pixel text-xs">
+                    <<i class="fa fa-archive mr-2"></</i>모든 포스트 보기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section id="about" class="py-12 px-4 bg-pixelDark/30 mt-12">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="font-pixel text-xl mb-8 text-center text-pixelLight">블로거 소개 <span class="text-pixelPurple">☆</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-32 h-32 md:w-48 md:h-48 pixel-border bg-pixelPurple flex items-center justify-center">
+                    <img src="https://picsum.photos/200/200?random=10" alt="프로필 사진" class="w-full h-full object-cover">
+                </div>
+                
+                <div>
+                    <h3 class="font-pixel text-lg mb-4 text-pixelLight">안녕하세요! 픽셀러입니다</h3>
+                    <p class="text-sm mb-4">90년대 게임과 문화를 좋아하는 블로거입니다.复古 감성을 담은 콘텐츠를 주로 공유하고 있으며, 특히 픽셀 아트와 8비트 음악에 관심이 많아요.</p>
+                    <p class="text-sm">이 블로그는 나의 일상, 생각, 발견들을 기록하는 공간이에요. 저와 같은 취향을 가진 사람들과 소통하고 싶어요!</p>
+                    
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-8 h-8 bg-pixelPurple flex items-center justify-center hover:bg-pixelLight hover:text-pixelBlack transition-colors">
+                            <<i class="fa fa-instagram"></</i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-pixelPurple flex items-center justify-center hover:bg-pixelLight hover:text-pixelBlack transition-colors">
+                            <<i class="fa fa-twitter"></</i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-pixelPurple flex items-center justify-center hover:bg-pixelLight hover:text-pixelBlack transition-colors">
+                            <<i class="fa fa-youtube-play"></</i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-pixelPurple flex items-center justify-center hover:bg-pixelLight hover:text-pixelBlack transition-colors">
+                            <<i class="fa fa-github"></</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 연락 섹션 -->
+    <section id="contact" class="py-12 px-4">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="font-pixel text-xl mb-8 text-center text-pixelLight">연락하기 <span class="text-pixelPurple">✉️</span></h2>
+            
+            <div class="pixel-border bg-pixelDark/50 p-6">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-pixel mb-2">이름</label>
+                        <input type="text" id="name" class="w-full bg-pixelBlack border-2 border-pixelPurple p-2 text-pixelWhite focus:outline-none focus:border-pixelLight" placeholder="당신의 이름">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-pixel mb-2">이메일</label>
+                        <input type="email" id="email" class="w-full bg-pixelBlack border-2 border-pixelPurple p-2 text-pixelWhite focus:outline-none focus:border-pixelLight" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-pixel mb-2">메시지</label>
+                        <textarea id="message" rows="4" class="w-full bg-pixelBlack border-2 border-pixelPurple p-2 text-pixelWhite focus:outline-none focus:border-pixelLight" placeholder="보내고 싶은 메시지를 적어주세요"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="pixel-button font-pixel text-xs w-full">
+                        <<i class="fa fa-paper-plane mr-2"></</i>메시지 보내기
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="py-8 px-4 border-t-4 border-pixelPurple mt-12">
+        <div class="container mx-auto text-center">
+            <div class="font-pixel text-sm mb-4">나의 블로그 © 2023</div>
+            <p class="text-xs text-pixelWhite/60">Made with <span class="text-pixelPurple">♥</span> in 199X style</p>
+        </div>
+    </footer>
+
+    <!-- 픽셀 장식 요소 -->
+    <div class="fixed bottom-4 right-4 w-10 h-10 bg-pixelPurple pixel-border flex items-center justify-center cursor-pointer hover:bg-pixelLight hover:text-pixelBlack transition-colors">
+        <<i class="fa fa-arrow-up"></</i>
+    </div>
+
+    <script>
+        // 스크롤 관련 기능
+        document.querySelector('.fa-arrow-up').parentElement.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 메뉴 클릭 시 부드러운 스크롤
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
