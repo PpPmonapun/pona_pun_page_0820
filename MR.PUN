@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可爱的网页</title>
+    <style>
+        body {
+            background-color: #e0b3ff;
+            font-family: 'Courier New', monospace; /* 像素风格字体 */
+            color: #4b0082;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px; /* 字体大小 */
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #8a2be2;
+            color: white;
+            border: 2px solid #4b0082; /* 像素感边框 */
+            padding: 10px 20px;
+            font-size: 1.5em; /* 增加按钮字体大小 */
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s; /* 动效 */
+        }
+        button:hover {
+            background-color: #7a1b9b;
+        }
+        .calendar, .notes {
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid #4b0082;
+            border-radius: 10px;
+            background-color: #f0e6ff;
+            width: 300px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+        }
+        .dateDisplay {
+            font-family: 'Courier New', monospace; /* 像素风格字体 */
+            font-size: 20px; /* 日期字体大小 */
+            margin: 10px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 2px solid #4b0082; /* 像素感边框 */
+            font-family: 'Courier New', monospace; /* 像素风格字体 */
+            font-size: 14px; /* 字体大小 */
+        }
+        #noteList {
+            text-align: left;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace; /* 像素风格字体 */
+            color: #8b008b; /* 深紫色 */
+            background-color: #ffffff; /* 白色背景 */
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto; /* 滚动条 */
+            border: 2px solid #4b0082; /* 像素感边框 */
+        }
+        #noteList div {
+            margin: 5px 0; /* 每条便签的间距 */
+            border-bottom: 1px solid #4b0082; /* 每条留言的底部边框 */
+            padding: 5px 0; /* 每条留言的上下内边距 */
+        }
+        .calendar {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 居中对齐 */
+        }
+        .calendar div {
+            border: 2px solid #4b0082; /* 像素感边框 */
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 14px; /* 日期字体大小 */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>欢迎来到我的网页！</h1>
+    <button id="startButton">입장</button>
+
+    <div class="calendar" id="calendar" style="display: none;">
+        <h2>小日历</h2>
+        <div class="dateDisplay" id="currentDate"></div>
+    </div>
+
+    <div class="notes" id="notes" style="display: none;">
+        <h2>便签板</h2>
+        <textarea id="noteInput" placeholder="在这里写下你的小事情..."></textarea>
+        <button id="submitNote">发送</button>
+        <div id="noteList"></div>
+    </div>
+
+    <script>
+        document.getElementById('startButton').onclick = function() {
+            document.getElementById('calendar').style.display = 'block';
+            document.getElementById('notes').style.display = 'block';
+            this.style.display = 'none'; // 隐藏按钮
+            displayDate();
+            loadNotes();
+        };
+
+        function displayDate() {
+            const date = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').innerText = date.toLocaleDateString('zh-CN', options);
+        }
+
+        document.getElementById('submitNote').onclick = function() {
+            const noteInput = document.getElementById('noteInput');
+            const note = noteInput.value;
+            if (note) {
+                const timestamp = new Date().toLocaleString();
+                const noteEntry = `${timestamp}: ${note}`;
+                saveNote(noteEntry);
+                noteInput.value = ''; // 清空输入框
+                loadNotes(); // 更新便签列表
+            }
+        };
+
+        function saveNote(note) {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.push(note);
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            document.getElementById('noteList').innerHTML = notes.map(n => `<div>${n}</div>`).join('');
+        }
+    </script>
+
+</body>
+</html>
